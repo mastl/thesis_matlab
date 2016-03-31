@@ -3,7 +3,7 @@ for IndexInEE = 1:length(spa.EE)        % Run loop over state space (i.e. the le
     %% Evaluate the level of EE
     if IndexInEE == length(spa.EE) % If EE is as high as it can...
         % ... then return values for this absorbing state
-        InvestmentChoice = 0;
+        
         % Find values
         Energy = fct.Energy(IndexInEE, par, spa);
         Consumption = fct.Cons(InvestmentChoice, Energy, par, spa);
@@ -20,7 +20,7 @@ for IndexInEE = 1:length(spa.EE)        % Run loop over state space (i.e. the le
         %... then figure out what is better: To invest or not invest
         
         %% Run loop over discrete decision
-        for InvestmentChoice = 0:1 % To invest or not invest
+        for InvestmentChoicex = 1:2 % To invest or not invest
             
             % Find values
             Energy = fct.Energy(IndexInEE, par, spa);
@@ -28,16 +28,15 @@ for IndexInEE = 1:length(spa.EE)        % Run loop over state space (i.e. the le
             ValueFunction = fct.ValueFunction(t, IndexInEE, InvestmentChoice, Consumption, out, par, spa);
             ValueFunctionPresent = fct.ValueFunctionPresent(t, IndexInEE, InvestmentChoice, Consumption, out, par, spa);
             
-            % Store values to compare struct
-            index = InvestmentChoice + 1;
-            compare.Energy(1,index) = Energy;
-            compare.Consumption(1,index) = Consumption;
-            compare.ValueFunction(1,index) = ValueFunction;
-            compare.ValueFunctionPresent(1,index) = ValueFunctionPresent;            
+            % Store values to compare struct 
+            compare.Energy(1,x) = Energy;
+            compare.Consumption(1,x) = Consumption;
+            compare.ValueFunction(1,x) = ValueFunction;
+            compare.ValueFunctionPresent(1,x) = ValueFunctionPresent;            
         end
         
         % Compare and return the better choice
-        if compare.ValueFunctionPresent(1,1) < compare.ValueFunctionPresent(1,2)
+        if compare.ValueFunctionPresent(1,1) > compare.ValueFunctionPresent(1,2)
             InvestmentChoice = 1; % If the value function of investing is highest then invest
             
             % Overwrite investment choice matrix with the investment choice

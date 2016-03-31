@@ -12,8 +12,7 @@ investment_decision = zeros(spa.T, experiment_iterations);
     for experiment_run = 1:experiment_iterations
         par.Kappa = Kappa(experiment_run);
         run;
-%         investment_decision(:, experiment_run) = out.InvestmentChoice;
+        investment_decision(experiment_run)
     end
     %% Print
-    investment_decision
 % end

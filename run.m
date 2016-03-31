@@ -4,7 +4,7 @@
         z2 = zeros(spa.T,length(spa.EE));
         z3 = zeros(spa.T,2);
 
-        out.InvestmentChoice    = z1;      % Store optimal choice
+        out.InvestmentChoice    = z2;      % Store optimal choice
         out.Energy              = z2;      % Store energy consumption (E in the model)
         out.Consumption         = z2;      % Store consumption with dimensions T x and length of EE
         out.ValueFunction       = z2;      % Store Value Function  with dimensions T x and length of EE
@@ -15,7 +15,6 @@
         z1 = zeros(1,1);
         z2 = zeros(1,length(spa.EE));
         
-        temp.InvestmentChoice    = z1;
         temp.Energy              = z2;      % Store energy consumption (E in the model)
         temp.Consumption         = z2;      % Store consumption with two rows
         temp.ValueFunction       = z2;      % Store Value Function  with two rows
