@@ -3,14 +3,14 @@
     spa.T       = 10;       % Number of time periods
     
     % Energy efficiency
-    spa.LowEE = 0.1;                    % Baseline value
-    spa.HighEE = 0.15;                   % Improved EE
+    spa.LowEE = 0.2;                    % Baseline value
+    spa.HighEE = 0.3;                   % Improved EE
     spa.EE = [spa.LowEE, spa.HighEE];   % Vector of efficiencies
 
 %% Parameters and exogenous variables
 
     % Utility
-    par.Rho     = 2;        % Constant relative risk (CRRA) parameter
+    par.Rho     = 0.5;        % Constant relative risk (CRRA) parameter
     
     % Discount and present bias
     par.DiscountRate = 0.04;                     % Discount rate used by the Danish State the first 35 years of a projects lifetime

@@ -55,14 +55,14 @@ classdef fct
             else 
                 if IndexInEE == length(spa.EE)                           % If the EE is as high as it can be...
                     NextValueFunction = out.ValueFunction(t+1, IndexInEE);  % ... it is that state that is looked up.
-                    print = 'Last IndexInEE'
+%                     print = 'Last IndexInEE'
                 else
                     if InvestmentChoice == 1                                % If the investment is made...
                         NextValueFunction = out.ValueFunction(t+1, IndexInEE + 1); % ... EE will improve.
-                        print = 'InvestmenChoice == 1'
+%                         print = 'InvestmenChoice == 1'
                     else                                                        % Else ...
                         NextValueFunction = out.ValueFunction(t+1, IndexInEE); % ... it will remain to have the same (low) state as today
-                        print = 'InvestmenChoice == 0'
+%                         print = 'InvestmenChoice == 0'
                     end
                 end
             end
@@ -70,7 +70,6 @@ classdef fct
         %% Store output
             function Output = StoreOutput(out, TimePeriod, temp)
                 % Stores the values at time t
-                    out.InvestmentChoice(TimePeriod, :) = temp.InvestmentChoice;          % Store optimal choice
                     out.Energy(TimePeriod, :)           = temp.Energy;                    % Store energy consumption (E in the model)
                     out.Consumption(TimePeriod, :)      = temp.Consumption;               % Store consumption with dimensions T x and length of EE
                     out.ValueFunction(TimePeriod, :)    = temp.ValueFunction;             % Store Value Function  with dimensions T x and length of EE
